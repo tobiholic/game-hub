@@ -7,7 +7,7 @@ interface Probs {
 
 const GameCardContainer = ({ children }: Probs) => {
   return (
-    <Box width={270} borderRadius={15} overflow="hidden">
+    <Box width="100%" borderRadius={15} overflow="hidden">
       {children}
     </Box>
   );
