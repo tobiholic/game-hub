@@ -14,9 +14,10 @@ import getCroppedImageUrl from '../services/image-url';
 
 interface Probs {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Probs) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Probs) => {
   const { data, isLoading, error } = useGenres();
   const skeletonGenres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 
@@ -50,6 +51,7 @@ const GenreList = ({ onSelectGenre }: Probs) => {
                   onSelectGenre(genres);
                 }}
                 fontSize="large"
+                fontWeight={genres.id === selectedGenre?.id ? 'bold' : 'normal'}
                 variant="link"
               >
                 {genres.name}
