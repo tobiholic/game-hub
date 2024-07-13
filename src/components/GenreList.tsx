@@ -39,7 +39,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Probs) => {
             </ListItem>
           ))}
         {data.map((genres) => (
-          <ListItem key={genres.id} paddingY="5px">
+          <ListItem key={genres.id} paddingY="7px">
             <HStack>
               <Image
                 boxSize="30px"
