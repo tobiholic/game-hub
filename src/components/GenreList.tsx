@@ -13,12 +13,12 @@ import {
 import useGenres, { Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 
-interface Probs {
+interface Props {
   onSelectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Probs) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   const skeletonGenres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 
@@ -27,7 +27,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Probs) => {
 
   return (
     <>
-      <Heading fontSize="2xl" marginBottom={3} marginTop={5}>
+      <Heading fontSize="2xl" marginBottom={3} marginTop={2}>
         Genres
       </Heading>
       <List marginTop={2}>
@@ -42,26 +42,26 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Probs) => {
               </HStack>
             </ListItem>
           ))}
-        {data.map((genres) => (
-          <ListItem key={genres.id} paddingY="7px">
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY="7px">
             <HStack>
               <Image
                 objectFit="cover"
                 boxSize="30px"
                 borderRadius={5}
-                src={getCroppedImageUrl(genres.image_background)}
+                src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
                 whiteSpace="normal"
                 textAlign="left"
                 onClick={() => {
-                  onSelectGenre(genres);
+                  onSelectGenre(genre);
                 }}
                 fontSize="large"
-                fontWeight={genres.id === selectedGenre?.id ? 'bold' : 'normal'}
+                fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
                 variant="link"
               >
-                {genres.name}
+                {genre.name}
               </Button>
             </HStack>
           </ListItem>
