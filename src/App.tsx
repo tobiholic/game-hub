@@ -9,6 +9,7 @@ import PlatformSelector from './components/PlatformSelector';
 import { Platform } from './hooks/usePlatforms';
 import SortSelector from './components/SortSelector';
 import GameHeading from './components/GameHeading';
+import WelcomeModal from './components/WelcomeModal';
 
 export interface GameQuery {
   genre: Genre | null;
@@ -19,8 +20,10 @@ export interface GameQuery {
 
 function App() {
   const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
   return (
     <>
+      <WelcomeModal />
       <Grid
         templateAreas={{
           base: `"nav" "main"`,
