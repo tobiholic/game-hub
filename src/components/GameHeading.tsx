@@ -18,7 +18,7 @@ const GameHeading = ({ gameQuery }: Probs) => {
 
   return (
     <>
-      <HStack justifyContent="space-between" paddingRight={10}>
+      <HStack justifyContent="space-between" paddingRight={2}>
         <Heading fontSize="6xl" as="h1">
           {heading}
         </Heading>

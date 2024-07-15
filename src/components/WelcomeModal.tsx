@@ -41,7 +41,7 @@ const WelcomeModal = () => {
             information about data security please visit
             <Link
               textDecoration="link"
-              textColor="blue"
+              textColor="#3D789D"
               target="_blank"
               href="https://www.tobischmid.com/data-protection/"
             >
