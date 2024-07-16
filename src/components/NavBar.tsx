@@ -12,7 +12,13 @@ const NavBar = ({ onSearch }: Probs) => {
     <>
       <HStack padding="10px">
         <Link href="https://portfolio-gamehub.tobischmid.com/">
-          <Image src={logo} width={100} height={90}></Image>
+          <Image
+            src={logo}
+            width={{
+              base: '65px',
+              lg: '80px',
+            }}
+          ></Image>
         </Link>
         <SearchInput onSearch={onSearch} />
         <ColorModeSwitch></ColorModeSwitch>

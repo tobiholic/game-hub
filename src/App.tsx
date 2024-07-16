@@ -33,6 +33,16 @@ function App() {
           base: '1fr',
           lg: '250px 1fr',
         }}
+        paddingTop={{
+          base: '05px',
+          md: '5px',
+          lg: '5px',
+        }}
+        paddingX={{
+          base: '0px',
+          md: '30px',
+          lg: '100px',
+        }}
       >
         <GridItem area="nav">
           <NavBar onSearch={(searchText) => setGameQuery({ ...GameQuery, searchText })} />
@@ -47,10 +57,10 @@ function App() {
         </Show>
         <GridItem area="main">
           <Box paddingX={5}>
-            <Box marginBottom={7}>
+            <Box marginBottom={7} marginTop={5}>
               <GameHeading gameQuery={GameQuery} />
             </Box>
-            <Flex marginBottom={2}>
+            <Flex marginBottom={2} marginTop={10}>
               <Box marginRight={3}>
                 <PlatformSelector
                   selectedPlatform={GameQuery.platform}

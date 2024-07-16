@@ -1,4 +1,4 @@
-import { Heading, HStack, Link, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Link, Text } from '@chakra-ui/react';
 import { GameQuery } from '../App';
 import { TbHeartHandshake } from 'react-icons/tb';
 
@@ -18,7 +18,17 @@ const GameHeading = ({ gameQuery }: Probs) => {
 
   return (
     <>
-      <HStack justifyContent="space-between" paddingRight={2}>
+      <Flex
+        flexDirection={{
+          base: 'column',
+          lg: 'row',
+        }}
+        justifyContent={{
+          base: 'space-around',
+          lg: 'space-between',
+        }}
+        paddingRight={2}
+      >
         <Heading fontSize="6xl" as="h1">
           {heading}
         </Heading>
@@ -32,7 +42,7 @@ const GameHeading = ({ gameQuery }: Probs) => {
             Tobias Schmid
           </Link>
         </HStack>
-      </HStack>
+      </Flex>
     </>
   );
 };

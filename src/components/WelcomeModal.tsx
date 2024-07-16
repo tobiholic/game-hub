@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 const WelcomeModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const ModalOverlayOne = () => <ModalOverlay backdropFilter="blur(10px)" />;
+  const ModalOverlayOne = () => <ModalOverlay backdropFilter="blur(10px)" width="100%" />;
 
   const [overlay, setOverlay] = React.useState(<ModalOverlayOne />);
 
@@ -34,11 +34,9 @@ const WelcomeModal = () => {
           <ModalCloseButton />
           <ModalBody>
             Welcome! <br />
-            Please note that this site is a demonstration of my skills in React
-            development. It is not a functional website, and as such, no personal data
-            will be collected from you. Consequently, there is no privacy policy in place.
-            I hope you find the demonstration informative and enjoyable. For more
-            information about data security please visit
+            This site is just a demo to show off my React skills. It's not a real, working
+            website, so no personal data is collected here. Because of that, there’s no
+            need for a privacy policy. For more info on data security, visit
             <Link
               textDecoration="link"
               textColor="#3D789D"
