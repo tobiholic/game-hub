@@ -29,7 +29,7 @@ const WelcomeModal = () => {
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
         {overlay}
-        <ModalContent>
+        <ModalContent margin={10}>
           <ModalHeader>About this project</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
