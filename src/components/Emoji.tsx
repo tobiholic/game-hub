@@ -1,7 +1,7 @@
+import { HStack, Image, ImageProps, Text } from '@chakra-ui/react';
 import bullsEye from '../assets/Emojis/bulls-eye.webp';
-import thumbsUp from '../assets/Emojis/thumbs-up.webp';
 import meh from '../assets/Emojis/meh.webp';
-import { Center, HStack, Image, ImageProps, Text, WrapItem } from '@chakra-ui/react';
+import thumbsUp from '../assets/Emojis/thumbs-up.webp';
 
 interface Probs {
   rating: number;

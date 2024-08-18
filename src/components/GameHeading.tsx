@@ -1,6 +1,6 @@
-import { Box, Flex, Heading, HStack, Link, Text } from '@chakra-ui/react';
-import { GameQuery } from '../App';
+import { Flex, Heading, HStack, Link, Text } from '@chakra-ui/react';
 import { TbHeartHandshake } from 'react-icons/tb';
+import { GameQuery } from '../App';
 
 interface Probs {
   gameQuery: GameQuery;
@@ -37,7 +37,11 @@ const GameHeading = ({ gameQuery }: Probs) => {
           <Text>Created with</Text>
           <TbHeartHandshake size={20} />
           <Text>by</Text>
-          <Link color="#3D789D" href="https://www.tobischmid.com" target="_blank">
+          <Link
+            color="#3D789D"
+            href="https://www.tobischmid.com"
+            target="_blank"
+          >
             {' '}
             Tobias Schmid
           </Link>
