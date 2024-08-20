@@ -1,11 +1,11 @@
-import { Button, Center, SimpleGrid, Text } from '@chakra-ui/react';
+import { Button, Center, SimpleGrid, Spinner } from '@chakra-ui/react';
+import React from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { GameQuery } from '../App';
-import useGames, { Game } from '../hooks/useGames';
+import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 import GameCardSkeleton from './GameCardSkeleton';
-import React from 'react';
-import { FaLaptopHouse } from 'react-icons/fa';
 
 interface Probs {
   gameQuery: GameQuery;
@@ -25,31 +25,50 @@ const GameGrid = ({ gameQuery }: Probs) => {
 
   // if (error) return <Text>{error.message}</Text>;
 
+  const fetchGamesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+
   return (
     <>
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        padding={5}
-        spacing={7}
-        width="100%"
+      <InfiniteScroll
+        dataLength={fetchGamesCount}
+        next={() => fetchNextPage()}
+        hasMore={!!hasNextPage}
+        loader={
+          <Center>
+            <Button marginY={3} spinnerPlacement="end" variant="outline">
+              <Spinner color="grey" marginEnd={3} />
+              {isFetchingNextPage ? 'Loading...' : 'Load more'}
+            </Button>
+          </Center>
+        }
+        endMessage={<p>Yay! You have made it to the end</p>}
       >
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeleton key={skeleton}></GameCardSkeleton>
-            </GameCardContainer>
-          ))}
-        {data?.pages.map((page, index) => (
-          <React.Fragment key={index}>
-            {page.results.map((game) => (
-              <GameCardContainer key={game.id}>
-                <GameCard key={game.id} game={game}></GameCard>
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+          padding={5}
+          spacing={7}
+          width="100%"
+        >
+          {isLoading &&
+            skeletons.map((skeleton) => (
+              <GameCardContainer key={skeleton}>
+                <GameCardSkeleton key={skeleton}></GameCardSkeleton>
               </GameCardContainer>
             ))}
-          </React.Fragment>
-        ))}
-      </SimpleGrid>
-      <Center>
+          {data?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((game) => (
+                <GameCardContainer key={game.id}>
+                  <GameCard key={game.id} game={game}></GameCard>
+                </GameCardContainer>
+              ))}
+            </React.Fragment>
+          ))}
+        </SimpleGrid>
+      </InfiniteScroll>
+      {/* <Center>
+    
         {hasNextPage && (
           <Button
             size={'lg'}
@@ -63,7 +82,7 @@ const GameGrid = ({ gameQuery }: Probs) => {
             Load More
           </Button>
         )}
-      </Center>
+      </Center> */}
     </>
   );
 };
