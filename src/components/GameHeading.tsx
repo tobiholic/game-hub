@@ -1,20 +1,23 @@
 import { Flex, Heading, HStack, Link, Text } from '@chakra-ui/react';
 import { TbHeartHandshake } from 'react-icons/tb';
 import { GameQuery } from '../App';
+import useGenres from '../hooks/useGenres';
+import usePlatforms from '../hooks/usePlatforms';
 
 interface Probs {
   gameQuery: GameQuery;
 }
 
 const GameHeading = ({ gameQuery }: Probs) => {
-  //Games
-  // Action Games
-  //Xbox Games
-  //Xbox Action Games
+  const { data: genres } = useGenres();
+  const genre = genres?.results.find((g) => g.id === gameQuery.genreId);
 
-  const heading = `${gameQuery.platform?.name || ''} ${
-    gameQuery.genre?.name || ''
-  } Games `;
+  const { data: platforms } = usePlatforms();
+  const platform = platforms?.results.find(
+    (p) => p.id === gameQuery.platformId
+  );
+
+  const heading = `${platform?.name || ''} ${genre?.name || ''} Games `;
 
   return (
     <>

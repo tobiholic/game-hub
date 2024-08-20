@@ -13,12 +13,14 @@ import getCroppedImageUrl from '../services/image-url';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const { data, isLoading, error } = useGenres();
-  const skeletonGenres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+  const skeletonGenres = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+  ];
 
   //if (isLoading) return <Spinner></Spinner>;
   if (error) return null;
@@ -34,7 +36,12 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
             <ListItem key={skeleton} paddingY="5px">
               <HStack>
                 <SkeletonCircle />
-                <SkeletonText skeletonHeight="1" mt={4} spacing={2} noOfLines={2}>
+                <SkeletonText
+                  skeletonHeight="1"
+                  mt={4}
+                  spacing={2}
+                  noOfLines={2}
+                >
                   Loading
                 </SkeletonText>
               </HStack>
@@ -56,7 +63,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                   onSelectGenre(genre);
                 }}
                 fontSize="large"
-                fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+                fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
                 variant="link"
               >
                 {genre.name}
