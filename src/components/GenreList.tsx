@@ -8,16 +8,17 @@ import {
   SkeletonCircle,
   SkeletonText,
 } from '@chakra-ui/react';
-import useGenres, { Genre } from '../hooks/useGenres';
+import useGameQueryStore from '../gameQueryStore';
+import useGenres from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
+  //get data from API
   const { data, isLoading, error } = useGenres();
+  //get data from store
+  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  //hardcode for amount of skeletons in Genre
   const skeletonGenres = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
   ];
@@ -60,7 +61,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                 whiteSpace="normal"
                 textAlign="left"
                 onClick={() => {
-                  onSelectGenre(genre);
+                  setSelectedGenreId(genre.id);
                 }}
                 fontSize="large"
                 fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
