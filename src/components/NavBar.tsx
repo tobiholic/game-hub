@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <>
       <HStack padding="10px">
-        <Link href="https://portfolio-gamehub.tobischmid.com/">
+        <Link href="/">
           <Image
             src={logo}
             width={{
