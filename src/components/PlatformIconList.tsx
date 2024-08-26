@@ -1,9 +1,10 @@
-import { HStack, Icon } from '@chakra-ui/react';
+import { HStack, Icon, Tooltip, WrapItem } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { BsGlobe } from 'react-icons/bs';
 import {
   FaAndroid,
   FaApple,
+  FaLaptop,
   FaLinux,
   FaPlaystation,
   FaWindows,
@@ -19,6 +20,7 @@ interface Probs {
 
 const PlatformIconList = ({ platforms }: Probs) => {
   const iconMap: { [key: string]: IconType } = {
+    pc: FaLaptop,
     windows: FaWindows,
     playstation: FaPlaystation,
     mac: FaApple,
@@ -31,14 +33,34 @@ const PlatformIconList = ({ platforms }: Probs) => {
   };
 
   return (
-    <HStack marginY={2}>
-      {platforms.map((platform) => (
-        <Icon
-          key={platform.slug}
-          as={iconMap[platform.slug]}
-          color="gray.500"
-        ></Icon>
-      ))}
+    <HStack
+      alignItems="center"
+      marginY={2}
+      overflow="scroll"
+      sx={{
+        '&::webkitScrollbar': {
+          display: 'none', // Hide scrollbar in Webkit browsers (Chrome, Safari)
+        },
+        msOverflowStyle: 'none', // Hide scrollbar in IE and Edge
+        scrollbarWidth: 'none', // Hide scrollbar in Firefox
+      }}
+    >
+      {platforms.map((platform) => {
+        const PlatformIcon = iconMap[platform.slug];
+        return (
+          <Tooltip
+            key={platform.slug}
+            label={platform.name}
+            hasArrow
+            placement="top"
+          >
+            {/* Use a span to wrap the Icon to ensure ref forwarding works correctly */}
+            <span>
+              <Icon as={PlatformIcon} color="gray.500" />
+            </span>
+          </Tooltip>
+        );
+      })}
     </HStack>
   );
 };

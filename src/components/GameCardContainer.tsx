@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 interface Probs {
@@ -8,11 +8,12 @@ interface Probs {
 const GameCardContainer = ({ children }: Probs) => {
   return (
     <Box
-      width="100%"
-      borderRadius={15}
+      transition="transform 0.2s ease-in-out"
+      _hover={{ transform: 'translateY(-10px)', boxShadow: '2xl' }}
       overflow="hidden"
+      borderRadius={15}
       border={0.5}
-      boxShadow="2xl"
+      boxShadow="xl"
       borderStyle="solid"
     >
       {children}

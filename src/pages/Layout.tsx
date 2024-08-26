@@ -12,7 +12,20 @@ const Layout = () => {
       }}
     >
       <NavBar />
-      <Outlet />
+      <Box
+        paddingX={{
+          base: '0px',
+          md: '10px',
+          lg: '20px',
+        }}
+        paddingY={{
+          base: '0px',
+          md: '10px',
+          lg: '30px',
+        }}
+      >
+        <Outlet />
+      </Box>
     </Box>
   );
 };
