@@ -1,8 +1,17 @@
+import { Box, Heading, Spinner } from '@chakra-ui/react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ExpandableText from '../components/ExpandableText';
 import useGame from '../hooks/useGame';
-import { Text, Heading, Spinner } from '@chakra-ui/react';
 
 const GameDetailsPage = () => {
+  //show more / less button
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    show ? setShow(false) : setShow(true);
+  };
+
+  //get params & data fetch data
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
 
@@ -15,7 +24,9 @@ const GameDetailsPage = () => {
   return (
     <>
       <Heading>{game.name}</Heading>
-      <Text marginTop={3}>{game.description_raw}</Text>
+      <Box marginTop={2}>
+        <ExpandableText>{game.description_raw}</ExpandableText>
+      </Box>
     </>
   );
 };
