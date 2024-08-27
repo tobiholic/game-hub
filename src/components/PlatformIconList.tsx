@@ -1,37 +1,12 @@
-import { HStack, Icon, Tooltip, WrapItem } from '@chakra-ui/react';
-import { IconType } from 'react-icons';
-import { BsGlobe } from 'react-icons/bs';
-import {
-  FaAndroid,
-  FaApple,
-  FaLaptop,
-  FaLinux,
-  FaPlaystation,
-  FaWindows,
-  FaXbox,
-} from 'react-icons/fa';
-import { MdPhoneIphone } from 'react-icons/md';
-import { SiNintendo } from 'react-icons/si';
+import { HStack, Icon, Tooltip } from '@chakra-ui/react';
 import { Platform } from '../entities/Platform';
+import iconMap from '../entities/PlatformIcons';
 
 interface Probs {
   platforms: Platform[];
 }
 
 const PlatformIconList = ({ platforms }: Probs) => {
-  const iconMap: { [key: string]: IconType } = {
-    pc: FaLaptop,
-    windows: FaWindows,
-    playstation: FaPlaystation,
-    mac: FaApple,
-    xbox: FaXbox,
-    nintendo: SiNintendo,
-    linux: FaLinux,
-    web: BsGlobe,
-    android: FaAndroid,
-    ios: MdPhoneIphone,
-  };
-
   return (
     <HStack
       alignItems="center"
@@ -46,7 +21,7 @@ const PlatformIconList = ({ platforms }: Probs) => {
       }}
     >
       {platforms.map((platform) => {
-        const PlatformIcon = iconMap[platform.slug];
+        const platformIcon = iconMap[platform.slug];
         return (
           <Tooltip
             key={platform.slug}
@@ -56,7 +31,7 @@ const PlatformIconList = ({ platforms }: Probs) => {
           >
             {/* Use a span to wrap the Icon to ensure ref forwarding works correctly */}
             <span>
-              <Icon as={PlatformIcon} color="gray.500" />
+              <Icon as={platformIcon} color="gray.500" />
             </span>
           </Tooltip>
         );
