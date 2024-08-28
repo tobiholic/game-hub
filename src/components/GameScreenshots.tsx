@@ -26,7 +26,13 @@ const GameScreenshots = ({ gameId, gameName }: Probs) => {
         <Heading marginBottom={5} size="lg">
           Screenshots
         </Heading>
-        <SimpleGrid columns={2} spacing={5}>
+        <SimpleGrid
+          columns={{
+            base: 1,
+            md: 2,
+          }}
+          spacing={5}
+        >
           {isLoading &&
             skeletons.map((s) => (
               <Skeleton height={400} key={s}>
