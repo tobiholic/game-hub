@@ -25,7 +25,7 @@ const Homepage = () => {
         }}
       >
         <Show above="lg">
-          <GridItem area="aside" paddingX={5} marginTop={7}>
+          <GridItem area="aside" paddingX={5} marginTop={5}>
             <GenreList />
           </GridItem>
         </Show>

@@ -27,7 +27,14 @@ interface Probs {
 
 const GameAttributes = ({ game }: Probs) => {
   return (
-    <SimpleGrid columns={[2, null, 3]} spacing={10}>
+    <SimpleGrid
+      columns={[2, null, 3]}
+      spacing={10}
+      borderWidth={1}
+      borderRadius={10}
+      padding={5}
+      shadow="lg"
+    >
       <Box height="auto">
         <Heading marginBottom={2} size="md" color="gray.600">
           Publisher
@@ -68,25 +75,29 @@ const GameAttributes = ({ game }: Probs) => {
           Ratings
         </Heading>
         <Box>
-          <Grid
-            templateColumns={{
-              base: 'repeat(2, 1fr)',
-              md: 'repeat(4, 1fr)',
-            }}
-            gap={5}
-          >
-            {game?.ratings.map((r) => (
-              <GridItem key={r.id}>
-                <StatGroup>
-                  <Stat>
-                    <StatLabel>{r.title}</StatLabel>
-                    <StatNumber>{r.count}</StatNumber>
-                    <StatHelpText>{r.percent}%</StatHelpText>
-                  </Stat>
-                </StatGroup>
-              </GridItem>
-            ))}
-          </Grid>
+          {game?.ratings.length === 0 ? (
+            <Text>No ratings available</Text>
+          ) : (
+            <Grid
+              templateColumns={{
+                base: 'repeat(2, 1fr)',
+                md: 'repeat(4, 1fr)',
+              }}
+              gap={5}
+            >
+              {game?.ratings.map((r) => (
+                <GridItem key={r.id}>
+                  <StatGroup>
+                    <Stat>
+                      <StatLabel>{r.title}</StatLabel>
+                      <StatNumber>{r.count}</StatNumber>
+                      <StatHelpText>{r.percent}%</StatHelpText>
+                    </Stat>
+                  </StatGroup>
+                </GridItem>
+              ))}
+            </Grid>
+          )}
         </Box>
       </Box>
 
@@ -94,17 +105,31 @@ const GameAttributes = ({ game }: Probs) => {
         <Heading marginBottom={2} size="md" color="gray.600">
           Metascore
         </Heading>
-        <BadgeCritic score={game!.metacritic} />
+        {game?.metacritic === null ? (
+          <Text>No metascore available</Text>
+        ) : (
+          <>
+            <BadgeCritic score={game!.metacritic} />
+          </>
+        )}
       </Box>
 
       <Box height="auto">
         <Heading marginBottom={2} size="md" color="gray.600">
           Playtime
         </Heading>
-        <HStack>
-          <Icon as={TimeIcon} />
-          <Text>{game!.playtime} hours</Text>
-        </HStack>
+        {game!.playtime === 0 ? (
+          <HStack>
+            {' '}
+            <Icon as={TimeIcon} />
+            <Text>not available</Text>
+          </HStack>
+        ) : (
+          <HStack>
+            <Icon as={TimeIcon} />
+            <Text>{game!.playtime} hours</Text>
+          </HStack>
+        )}{' '}
       </Box>
     </SimpleGrid>
   );

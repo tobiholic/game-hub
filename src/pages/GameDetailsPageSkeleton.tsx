@@ -25,7 +25,15 @@ const GameDetailsPageSkeleton = () => {
         <SkeletonText skeletonHeight="8px" noOfLines={4}></SkeletonText>
       </Box>
       <Box marginTop={20}></Box>
-      <SimpleGrid columns={[2, null, 3]} spacing={15} rowGap={20}>
+      <SimpleGrid
+        columns={[2, null, 3]}
+        spacing={15}
+        rowGap="80px"
+        borderWidth={1}
+        borderRadius={10}
+        padding={5}
+        shadow="lg"
+      >
         <Box height="110px">
           <List>
             <Skeleton height="10px" width="100px" marginBottom={4} />
