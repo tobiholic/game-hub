@@ -1,5 +1,5 @@
 import { HStack, Icon, Tooltip } from '@chakra-ui/react';
-import { Platform } from '../entities/Platform';
+import Platform from '../entities/Platform';
 import iconMap from '../entities/PlatformIcons';
 
 interface Probs {

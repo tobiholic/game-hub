@@ -17,7 +17,7 @@ import {
   StatNumber,
   Text,
 } from '@chakra-ui/react';
-import { Game } from '../entities/Game';
+import Game from '../entities/Game';
 import iconMap from '../entities/PlatformIcons';
 import BadgeCritic from './BadgeCritic';
 
@@ -28,7 +28,13 @@ interface Probs {
 const GameAttributes = ({ game }: Probs) => {
   return (
     <SimpleGrid
-      columns={[2, null, 3]}
+      columns={{
+        base: 1,
+        sm: 1,
+        md: 2,
+        lg: 2,
+        xl: 2,
+      }}
       spacing={10}
       borderWidth={1}
       borderRadius={10}
@@ -70,6 +76,7 @@ const GameAttributes = ({ game }: Probs) => {
           ))}
         </List>
       </Box>
+
       <Box height="auto">
         <Heading marginBottom={2} size="md" color="gray.600">
           Ratings
@@ -80,7 +87,7 @@ const GameAttributes = ({ game }: Probs) => {
           ) : (
             <Grid
               templateColumns={{
-                base: 'repeat(2, 1fr)',
+                base: 'repeat(1, 1fr)',
                 md: 'repeat(4, 1fr)',
               }}
               gap={5}

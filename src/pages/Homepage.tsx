@@ -4,11 +4,12 @@ import GameHeading from '../components/GameHeading';
 import GenreList from '../components/GenreList';
 import PlatformSelector from '../components/PlatformSelector';
 import SortSelector from '../components/SortSelector';
+import WelcomeModal from '../components/WelcomeModal';
 
 const Homepage = () => {
   return (
     <>
-      {/* <WelcomeModal /> */}
+      <WelcomeModal />
       <Grid
         templateAreas={{
           base: `"main"`,

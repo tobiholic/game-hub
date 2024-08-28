@@ -22,7 +22,7 @@ const GameTrailer = ({ gameId }: Probs) => {
         src={first.data[480]}
         poster={first.preview}
         controls
-        width={800}
+        width="auto"
       />
     </Box>
   ) : null;

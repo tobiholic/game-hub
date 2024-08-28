@@ -10,11 +10,12 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 
 const WelcomeModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [hasSeenModal, setHasSeenModal] = useState(false);
 
   const ModalOverlayOne = () => (
     <ModalOverlay backdropFilter="blur(10px)" width="100%" />
@@ -23,13 +24,22 @@ const WelcomeModal = () => {
   const [overlay, setOverlay] = React.useState(<ModalOverlayOne />);
 
   useEffect(() => {
-    onOpen();
+    const modalShown = localStorage.getItem('modalShown');
+
+    if (!modalShown) onOpen();
+
     setOverlay(<ModalOverlayOne />);
   }, [onOpen]);
 
+  const handleClose = () => {
+    onClose();
+    localStorage.setItem('modalShown', 'true');
+    setHasSeenModal(true);
+  };
+
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
+      <Modal isOpen={isOpen} onClose={handleClose} isCentered size="xl">
         {overlay}
         <ModalContent margin={10}>
           <ModalHeader>About this project</ModalHeader>
@@ -54,7 +64,7 @@ const WelcomeModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button colorScheme="blue" mr={3} onClick={handleClose}>
               Understood, have a look around
             </Button>
           </ModalFooter>

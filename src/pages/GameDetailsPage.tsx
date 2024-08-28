@@ -21,7 +21,12 @@ const GameDetailsPage = () => {
   if (error) throw error;
 
   return (
-    <>
+    <Box
+      padding={{
+        base: '30px',
+        md: '0px',
+      }}
+    >
       <Box display="flex" alignContent="top">
         <Heading>
           {game!.name}
@@ -37,11 +42,11 @@ const GameDetailsPage = () => {
       <Box marginTop={10}>
         <GameAttributes game={game!} />
       </Box>
-      <SimpleGrid columns={2} gap={10} marginTop={12}>
+      <SimpleGrid columns={{ base: 1, lg: 2 }} gap={10} marginTop={12}>
         <GameTrailer gameId={game!.id} />
         <GameScreenshots gameId={game!.id} gameName={game!.name} />
       </SimpleGrid>
-    </>
+    </Box>
   );
 };
 

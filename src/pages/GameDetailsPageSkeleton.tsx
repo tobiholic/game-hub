@@ -24,17 +24,22 @@ const GameDetailsPageSkeleton = () => {
       <Box marginTop={3}>
         <SkeletonText skeletonHeight="8px" noOfLines={4}></SkeletonText>
       </Box>
-      <Box marginTop={20}></Box>
+      <Box marginTop={10}></Box>
       <SimpleGrid
-        columns={[2, null, 3]}
+        columns={{
+          base: 2,
+          md: 2,
+          lg: 2,
+          xl: 2,
+        }}
         spacing={15}
-        rowGap="80px"
+        rowGap="30px"
         borderWidth={1}
         borderRadius={10}
         padding={5}
         shadow="lg"
       >
-        <Box height="110px">
+        <Box height="80px">
           <List>
             <Skeleton height="10px" width="100px" marginBottom={4} />
             <ListItem>

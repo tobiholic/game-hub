@@ -1,12 +1,5 @@
 import useGamePictures from '../hooks/useGamePictures';
-import {
-  Box,
-  Heading,
-  Image,
-  SimpleGrid,
-  Skeleton,
-  Spinner,
-} from '@chakra-ui/react';
+import { Box, Heading, Image, SimpleGrid, Skeleton } from '@chakra-ui/react';
 
 interface Probs {
   gameId: number;
