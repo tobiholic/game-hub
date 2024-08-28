@@ -39,7 +39,7 @@ const WelcomeModal = () => {
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={handleClose} isCentered size="xl">
+      <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
         {overlay}
         <ModalContent margin={10}>
           <ModalHeader>About this project</ModalHeader>
