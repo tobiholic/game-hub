@@ -91,7 +91,6 @@ const GameAttributes = ({ game }: Probs) => {
       </Box>
 
       <Box height="auto">
-        {' '}
         <Heading marginBottom={2} size="md" color="gray.600">
           Metascore
         </Heading>

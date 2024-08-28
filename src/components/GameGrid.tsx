@@ -12,6 +12,7 @@ import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 import GameCardSkeleton from './GameCardSkeleton';
+import ErrorPage from '../pages/ErrorPage';
 
 const GameGrid = () => {
   const {
@@ -23,17 +24,8 @@ const GameGrid = () => {
     hasNextPage,
   } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  if (error)
-    return (
-      <Center margin={10}>
-        <Alert status="error" borderRadius={5}>
-          <AlertIcon />
-          {typeof error === 'string'
-            ? error
-            : 'An error occurred. Please try again.'}
-        </Alert>
-      </Center>
-    );
+
+  if (error) throw error;
 
   const fetchGamesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;

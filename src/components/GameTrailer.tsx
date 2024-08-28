@@ -1,5 +1,5 @@
 import useGameMovies from '../hooks/useGameMovies';
-import { Heading } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 
 interface Probs {
   gameId: number;
@@ -14,7 +14,7 @@ const GameTrailer = ({ gameId }: Probs) => {
   const first = trailer?.results[0];
 
   return first ? (
-    <>
+    <Box>
       <Heading marginBottom={5} size="lg">
         {first.name}
       </Heading>
@@ -24,7 +24,7 @@ const GameTrailer = ({ gameId }: Probs) => {
         controls
         width={800}
       />
-    </>
+    </Box>
   ) : null;
 };
 
