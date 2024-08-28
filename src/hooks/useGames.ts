@@ -4,6 +4,8 @@ import useGameQueryStore from '../gameQueryStore';
 import APIClient from '../services/api-client';
 import { Game } from '../entities/Game';
 
+('/games/id/movie');
+
 const apiClient = new APIClient<Game>('/games');
 
 const useGames = () => {

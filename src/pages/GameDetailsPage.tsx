@@ -1,10 +1,11 @@
-import { Box, Heading, Spinner } from '@chakra-ui/react';
+import { AspectRatio, Box, Heading, Spinner } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
 import ExpandableText from '../components/ExpandableText';
 import useGame from '../hooks/useGame';
 import GameAttributes from '../components/GameAttributes';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import ReleaseHeadingDate from '../components/ReleaseHeadingDate';
+import GameTrailer from '../components/GameTrailer';
 
 const GameDetailsPage = () => {
   //get params & data fetch data
@@ -33,6 +34,9 @@ const GameDetailsPage = () => {
       </Box>
       <Box marginTop={10}>
         <GameAttributes game={game} />
+      </Box>
+      <Box marginTop={12}>
+        <GameTrailer gameId={game.id} />
       </Box>
     </>
   );
